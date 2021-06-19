@@ -18,7 +18,7 @@ import jason.practice.cleanarchitecture_mvp_livedata.ui.wifi.WifiActivity;
 public class MainActivity extends AppCompatActivity
         implements MainView {
 
-    jason.practice.cleanarchitecture_mvp_livedata.ui.main.MainPresenter presenter;
+    MainPresenter presenter;
     TextView txtWifi2G, txtWifi5G;
 
     @Override
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         App app = (App) getApplication();
-        presenter = new jason.practice.cleanarchitecture_mvp_livedata.ui.main.MainPresenter(
+        presenter = new MainPresenter(
                 this,
                 app.getWifi2GModel(),
                 app.getWifi5GModel(),
