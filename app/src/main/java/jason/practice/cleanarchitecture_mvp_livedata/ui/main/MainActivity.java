@@ -2,6 +2,7 @@ package jason.practice.cleanarchitecture_mvp_livedata.ui.main;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,11 +38,8 @@ public class MainActivity extends AppCompatActivity
         txtWifi2G = findViewById(R.id.txtWifi2G);
         txtWifi5G = findViewById(R.id.txtWifi5G);
 
-        findViewById(R.id.btnFetchWifi).setOnClickListener(v ->
-                presenter.fetchWifiData());
-
-        findViewById(R.id.btnGoTo).setOnClickListener(v ->
-                startActivity(new Intent(MainActivity.this, WifiActivity.class)));
+        findViewById(R.id.btnFetchWifi).setOnClickListener(this::onFetchWifiClick);
+        findViewById(R.id.btnGoTo).setOnClickListener(this::onGoToClick);
     }
 
     @Override
@@ -71,5 +69,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void error(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void onFetchWifiClick(View v) {
+        presenter.fetchWifiData();
+    }
+
+    private void onGoToClick(View v) {
+        startActivity(new Intent(MainActivity.this, WifiActivity.class));
     }
 }
